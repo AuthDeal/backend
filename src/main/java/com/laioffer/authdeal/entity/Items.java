@@ -31,9 +31,9 @@ public class Items implements Serializable {
   private String picture;
   private String description;
 
-//  @Enumerated(EnumType.STRING)
-//  @Column(length = 8)
-//  private ItemCondition condition;
+  @Enumerated(EnumType.STRING)
+  @Column(length = 8)
+  private ItemCondition itemCondition;
 
   private int zipcode;
 
