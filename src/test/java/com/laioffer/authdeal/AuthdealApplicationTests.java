@@ -1,4 +1,4 @@
-package com.laioffer.authdeal.authdeal;
+package com.laioffer.authdeal;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
