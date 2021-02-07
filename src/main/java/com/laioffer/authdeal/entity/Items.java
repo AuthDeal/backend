@@ -37,4 +37,112 @@ public class Items implements Serializable {
 
   private int zipcode;
 
+  public Items() {
+  }
+
+  public Items(int itemId, Users users, String itemName, float price, String picture,
+      String description, ItemCondition itemCondition, int zipcode) {
+    this.itemId = itemId;
+    this.users = users;
+    this.itemName = itemName;
+    this.price = price;
+    this.picture = picture;
+    this.description = description;
+    this.itemCondition = itemCondition;
+    this.zipcode = zipcode;
+  }
+
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
+
+  public int getItemId() {
+    return itemId;
+  }
+
+  public void setItemId(int itemId) {
+    this.itemId = itemId;
+  }
+
+  public Users getUsers() {
+    return users;
+  }
+
+  public void setUsers(Users users) {
+    this.users = users;
+  }
+
+  public String getItemName() {
+    return itemName;
+  }
+
+  public void setItemName(String itemName) {
+    this.itemName = itemName;
+  }
+
+  public float getPrice() {
+    return price;
+  }
+
+  public void setPrice(float price) {
+    this.price = price;
+  }
+
+  public String getPicture() {
+    return picture;
+  }
+
+  public void setPicture(String picture) {
+    this.picture = picture;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public ItemCondition getItemCondition() {
+    return itemCondition;
+  }
+
+  public void setItemCondition(ItemCondition itemCondition) {
+    this.itemCondition = itemCondition;
+  }
+
+  public int getZipcode() {
+    return zipcode;
+  }
+
+  public void setZipcode(int zipcode) {
+    this.zipcode = zipcode;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Items)) {
+      return false;
+    }
+    Items items = (Items) o;
+    return getItemId() == items.getItemId() &&
+        Float.compare(items.getPrice(), getPrice()) == 0 &&
+        getZipcode() == items.getZipcode() &&
+        Objects.equals(getUsers(), items.getUsers()) &&
+        Objects.equals(getItemName(), items.getItemName()) &&
+        Objects.equals(getPicture(), items.getPicture()) &&
+        Objects.equals(getDescription(), items.getDescription()) &&
+        getItemCondition() == items.getItemCondition();
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects
+        .hash(getItemId(), getUsers(), getItemName(), getPrice(), getPicture(), getDescription(),
+            getItemCondition(), getZipcode());
+  }
 }
