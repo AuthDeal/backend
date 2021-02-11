@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import org.springframework.data.relational.core.sql.In;
 
 @Entity
 @Table(name = "items")
@@ -32,7 +31,6 @@ public class Items implements Serializable {
   private String description;
 
   @Enumerated(EnumType.STRING)
-  @Column(length = 8)
   private ItemCondition itemCondition;
 
   private int zipcode;
@@ -132,7 +130,6 @@ public class Items implements Serializable {
     return getItemId() == items.getItemId() &&
         Float.compare(items.getPrice(), getPrice()) == 0 &&
         getZipcode() == items.getZipcode() &&
-        Objects.equals(getUsers(), items.getUsers()) &&
         Objects.equals(getItemName(), items.getItemName()) &&
         Objects.equals(getPicture(), items.getPicture()) &&
         Objects.equals(getDescription(), items.getDescription()) &&
@@ -141,8 +138,7 @@ public class Items implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects
-        .hash(getItemId(), getUsers(), getItemName(), getPrice(), getPicture(), getDescription(),
-            getItemCondition(), getZipcode());
+    return Objects.hash(getItemId(), getItemName(), getPrice(), getPicture(), getDescription(),
+        getItemCondition(), getZipcode());
   }
 }
