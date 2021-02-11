@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "messages")
-public class Massages {
+public class Messages {
 
   private static final long serialVersionUID = -6571020028726257848L;
 
@@ -28,10 +28,10 @@ public class Massages {
   private boolean isRead;
   private Timestamp times;
 
-  public Massages() {
+  public Messages() {
   }
 /*
-  public Massages(int messageId, Users from, Users to, String content, boolean read,
+  public Messages(int messageId, Users from, Users to, String content, boolean read,
       Timestamp timestamp) {
     this.messageId = messageId;
     this.from = from;
@@ -98,10 +98,10 @@ public class Massages {
     if (this == o) {
       return true;
     }
-    if (!(o instanceof Massages)) {
+    if (!(o instanceof Messages)) {
       return false;
     }
-    Massages massages = (Massages) o;
+    Messages massages = (Messages) o;
     return getMessageId() == massages.getMessageId() &&
         isRead() == massages.isRead() &&
         Objects.equals(getContent(), massages.getContent()) &&
