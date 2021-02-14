@@ -141,4 +141,18 @@ public class Items implements Serializable {
     return Objects.hash(getItemId(), getItemName(), getPrice(), getPicture(), getDescription(),
         getItemCondition(), getZipcode());
   }
+
+  @Override
+  public String toString() {
+    return "Items{" +
+        "itemId=" + itemId +
+        ", users=" + users +
+        ", itemName='" + itemName + '\'' +
+        ", price=" + price +
+        ", picture='" + picture + '\'' +
+        ", description='" + description + '\'' +
+        ", itemCondition=" + itemCondition +
+        ", zipcode=" + zipcode +
+        '}';
+  }
 }

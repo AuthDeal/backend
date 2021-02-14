@@ -1,6 +1,7 @@
 package com.laioffer.authdeal.entity;
 
 import java.sql.Timestamp;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,15 +31,15 @@ public class Messages {
 
   public Messages() {
   }
-/*
-  public Messages(int messageId, Users from, Users to, String content, boolean read,
-      Timestamp timestamp) {
+
+  public Messages(int messageId, Users from, Users to, String text, boolean isRead,
+      Timestamp times) {
     this.messageId = messageId;
     this.from = from;
     this.to = to;
-    this.content = content;
-    this.read = read;
-    this.timestamp = timestamp;
+    this.text = text;
+    this.isRead = isRead;
+    this.times = times;
   }
 
   public static long getSerialVersionUID() {
@@ -69,28 +70,28 @@ public class Messages {
     this.to = to;
   }
 
-  public String getContent() {
-    return content;
+  public String getText() {
+    return text;
   }
 
-  public void setContent(String content) {
-    this.content = content;
+  public void setText(String text) {
+    this.text = text;
   }
 
   public boolean isRead() {
-    return read;
+    return isRead;
   }
 
   public void setRead(boolean read) {
-    this.read = read;
+    isRead = read;
   }
 
-  public Timestamp getTimestamp() {
-    return timestamp;
+  public Timestamp getTimes() {
+    return times;
   }
 
-  public void setTimestamp(Timestamp timestamp) {
-    this.timestamp = timestamp;
+  public void setTimes(Timestamp times) {
+    this.times = times;
   }
 
   @Override
@@ -101,17 +102,27 @@ public class Messages {
     if (!(o instanceof Messages)) {
       return false;
     }
-    Messages massages = (Messages) o;
-    return getMessageId() == massages.getMessageId() &&
-        isRead() == massages.isRead() &&
-        Objects.equals(getContent(), massages.getContent()) &&
-        Objects.equals(getTimestamp(), massages.getTimestamp());
+    Messages messages = (Messages) o;
+    return getMessageId() == messages.getMessageId() &&
+        isRead() == messages.isRead() &&
+        Objects.equals(getText(), messages.getText()) &&
+        Objects.equals(getTimes(), messages.getTimes());
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(getMessageId(), getContent(), isRead(), getTimestamp());
+    return Objects.hash(getMessageId(), getText(), isRead(), getTimes());
   }
 
- */
+  @Override
+  public String toString() {
+    return "Messages{" +
+        "messageId=" + messageId +
+        ", from=" + from +
+        ", to=" + to +
+        ", text='" + text + '\'' +
+        ", isRead=" + isRead +
+        ", times=" + times +
+        '}';
+  }
 }

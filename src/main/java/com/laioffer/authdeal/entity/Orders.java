@@ -220,4 +220,25 @@ public class Orders implements Serializable {
             getFirstName(), getLastName(), getAddress(), getCity(), getState(), getZipcode(),
             getCountry());
   }
+
+  @Override
+  public String toString() {
+    return "Orders{" +
+        "orderId=" + orderId +
+        ", buyer=" + buyer +
+        ", seller=" + seller +
+        ", item=" + item +
+        ", orderDate=" + orderDate +
+        ", lastUpdateDate=" + lastUpdateDate +
+        ", orderStatus=" + orderStatus +
+        ", isPickUp=" + isPickUp +
+        ", firstName='" + firstName + '\'' +
+        ", lastName='" + lastName + '\'' +
+        ", address='" + address + '\'' +
+        ", city='" + city + '\'' +
+        ", state='" + state + '\'' +
+        ", zipcode='" + zipcode + '\'' +
+        ", country='" + country + '\'' +
+        '}';
+  }
 }

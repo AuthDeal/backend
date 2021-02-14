@@ -90,4 +90,15 @@ public class Users implements Serializable {
   public int hashCode() {
     return Objects.hash(getUserName(), getPassword(), isEnabled(), getRate(), getPicture());
   }
+
+  @Override
+  public String toString() {
+    return "Users{" +
+        "userName='" + userName + '\'' +
+        ", password='" + password + '\'' +
+        ", enabled=" + enabled +
+        ", rate=" + rate +
+        ", picture='" + picture + '\'' +
+        '}';
+  }
 }
