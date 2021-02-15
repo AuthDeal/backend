@@ -1,6 +1,9 @@
 package com.laioffer.authdeal.entity;
 
 import java.sql.Timestamp;
+
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,88 +33,5 @@ public class Messages {
 
   public Messages() {
   }
-/*
-  public Messages(int messageId, Users from, Users to, String content, boolean read,
-      Timestamp timestamp) {
-    this.messageId = messageId;
-    this.from = from;
-    this.to = to;
-    this.content = content;
-    this.read = read;
-    this.timestamp = timestamp;
-  }
 
-  public static long getSerialVersionUID() {
-    return serialVersionUID;
-  }
-
-  public int getMessageId() {
-    return messageId;
-  }
-
-  public void setMessageId(int messageId) {
-    this.messageId = messageId;
-  }
-
-  public Users getFrom() {
-    return from;
-  }
-
-  public void setFrom(Users from) {
-    this.from = from;
-  }
-
-  public Users getTo() {
-    return to;
-  }
-
-  public void setTo(Users to) {
-    this.to = to;
-  }
-
-  public String getContent() {
-    return content;
-  }
-
-  public void setContent(String content) {
-    this.content = content;
-  }
-
-  public boolean isRead() {
-    return read;
-  }
-
-  public void setRead(boolean read) {
-    this.read = read;
-  }
-
-  public Timestamp getTimestamp() {
-    return timestamp;
-  }
-
-  public void setTimestamp(Timestamp timestamp) {
-    this.timestamp = timestamp;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof Messages)) {
-      return false;
-    }
-    Messages massages = (Messages) o;
-    return getMessageId() == massages.getMessageId() &&
-        isRead() == massages.isRead() &&
-        Objects.equals(getContent(), massages.getContent()) &&
-        Objects.equals(getTimestamp(), massages.getTimestamp());
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(getMessageId(), getContent(), isRead(), getTimestamp());
-  }
-
- */
 }

@@ -220,4 +220,5 @@ public class Orders implements Serializable {
             getFirstName(), getLastName(), getAddress(), getCity(), getState(), getZipcode(),
             getCountry());
   }
+
 }
