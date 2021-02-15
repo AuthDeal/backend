@@ -18,24 +18,31 @@ public class Users implements Serializable {
   private boolean enabled;
   private float rate;
   private String picture;
+  private String phoneNum;
 
   public Users() {
   }
 
-  public Users(String userName, String password, boolean enabled, float rate, String picture) {
+  public Users(String userName, String password, boolean enabled, float rate,
+      String picture, String phoneNum) {
     this.userName = userName;
     this.password = password;
     this.enabled = enabled;
     this.rate = rate;
     this.picture = picture;
+    this.phoneNum = phoneNum;
+  }
+
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
   }
 
   public String getUserName() {
     return userName;
   }
 
-  public void setUserName(String user) {
-    this.userName = user;
+  public void setUserName(String userName) {
+    this.userName = userName;
   }
 
   public String getPassword() {
@@ -70,6 +77,14 @@ public class Users implements Serializable {
     this.picture = picture;
   }
 
+  public String getPhoneNum() {
+    return phoneNum;
+  }
+
+  public void setPhoneNum(String phoneNum) {
+    this.phoneNum = phoneNum;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -78,17 +93,19 @@ public class Users implements Serializable {
     if (!(o instanceof Users)) {
       return false;
     }
-    Users users1 = (Users) o;
-    return isEnabled() == users1.isEnabled() &&
-        Float.compare(users1.getRate(), getRate()) == 0 &&
-        Objects.equals(getUserName(), users1.getUserName()) &&
-        Objects.equals(getPassword(), users1.getPassword()) &&
-        Objects.equals(getPicture(), users1.getPicture());
+    Users users = (Users) o;
+    return isEnabled() == users.isEnabled() &&
+        Float.compare(users.getRate(), getRate()) == 0 &&
+        Objects.equals(getUserName(), users.getUserName()) &&
+        Objects.equals(getPassword(), users.getPassword()) &&
+        Objects.equals(getPicture(), users.getPicture()) &&
+        Objects.equals(getPhoneNum(), users.getPhoneNum());
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(getUserName(), getPassword(), isEnabled(), getRate(), getPicture());
+    return Objects
+        .hash(getUserName(), getPassword(), isEnabled(), getRate(), getPicture(), getPhoneNum());
   }
 
   @Override
@@ -99,6 +116,7 @@ public class Users implements Serializable {
         ", enabled=" + enabled +
         ", rate=" + rate +
         ", picture='" + picture + '\'' +
+        ", phoneNum='" + phoneNum + '\'' +
         '}';
   }
 }
