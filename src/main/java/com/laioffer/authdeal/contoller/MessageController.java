@@ -15,6 +15,11 @@ public class MessageController {
   @Autowired
   MessageDao messageDao;
 
+  @RequestMapping(value="/messages", method = RequestMethod.POST)
+  public Messages addDiscussionComment(Messages newMsg) {
+    return messageDao.createMsg(newMsg);
+  }
+
   @RequestMapping(value = "/messages/all", method = RequestMethod.GET)
   public List<Messages> fetchAllMsgs() {
     return messageDao.findAllMsgs();

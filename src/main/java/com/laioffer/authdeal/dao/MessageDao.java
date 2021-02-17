@@ -14,8 +14,8 @@ public class MessageDao {
   @Autowired
   MessagesRepository messagesRepository;
 
-  public void createMsg(Messages message) {
-    messagesRepository.save(message);
+  public Messages createMsg(Messages message) {
+    return messagesRepository.save(message);
   }
 
   public Messages findMsgById(int messageId) {
