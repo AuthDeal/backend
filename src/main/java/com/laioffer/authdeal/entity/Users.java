@@ -34,8 +34,8 @@ public class Users implements Serializable {
     return userName;
   }
 
-  public void setUserName(String user) {
-    this.userName = user;
+  public void setUserName(String userName) {
+    this.userName = userName;
   }
 
   public String getPassword() {
@@ -89,5 +89,16 @@ public class Users implements Serializable {
   @Override
   public int hashCode() {
     return Objects.hash(getUserName(), getPassword(), isEnabled(), getRate(), getPicture());
+  }
+
+  @Override
+  public String toString() {
+    return "Users{" +
+            "userName='" + userName + '\'' +
+            ", password='" + password + '\'' +
+            ", enabled=" + enabled +
+            ", rate=" + rate +
+            ", picture='" + picture + '\'' +
+            '}';
   }
 }

@@ -24,7 +24,6 @@ public class Items implements Serializable {
 
   @ManyToOne
   private Users users;
-
   private String itemName;
   private float price;
   private String picture;
@@ -38,10 +37,20 @@ public class Items implements Serializable {
   public Items() {
   }
 
-  public Items(int itemId, Users users, String itemName, float price, String picture,
+  public Items( Users user, String itemName, float price, String picture,
+               String description, ItemCondition itemCondition, int zipcode) {
+    this.users = user;
+    this.itemName = itemName;
+    this.price = price;
+    this.picture = picture;
+    this.description = description;
+    this.itemCondition = itemCondition;
+    this.zipcode = zipcode;
+  }
+  public Items(int itemId, Users user, String itemName, float price, String picture,
       String description, ItemCondition itemCondition, int zipcode) {
+    this.users = user;
     this.itemId = itemId;
-    this.users = users;
     this.itemName = itemName;
     this.price = price;
     this.picture = picture;
@@ -140,5 +149,19 @@ public class Items implements Serializable {
   public int hashCode() {
     return Objects.hash(getItemId(), getItemName(), getPrice(), getPicture(), getDescription(),
         getItemCondition(), getZipcode());
+  }
+
+  @Override
+  public String toString() {
+    return "Items{" +
+            "itemId=" + itemId +
+            ", users=" + users +
+            ", itemName='" + itemName + '\'' +
+            ", price=" + price +
+            ", picture='" + picture + '\'' +
+            ", description='" + description + '\'' +
+            ", itemCondition=" + itemCondition +
+            ", zipcode=" + zipcode +
+            '}';
   }
 }
