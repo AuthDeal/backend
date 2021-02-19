@@ -16,7 +16,7 @@ public class MessageController {
   MessageDao messageDao;
 
   @RequestMapping(value="/messages", method = RequestMethod.POST)
-  public Messages addDiscussionComment(Messages newMsg) {
+  public Messages addMessage(Messages newMsg) {
     return messageDao.createMsg(newMsg);
   }
 
