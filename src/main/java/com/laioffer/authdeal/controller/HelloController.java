@@ -1,4 +1,4 @@
-package com.laioffer.authdeal.contoller;
+package com.laioffer.authdeal.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

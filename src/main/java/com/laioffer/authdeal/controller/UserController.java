@@ -1,4 +1,4 @@
-package com.laioffer.authdeal.contoller;
+package com.laioffer.authdeal.controller;
 
 import com.laioffer.authdeal.dao.UserDao;
 import com.laioffer.authdeal.entity.Users;
