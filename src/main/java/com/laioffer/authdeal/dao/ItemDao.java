@@ -1,40 +1,31 @@
 package com.laioffer.authdeal.dao;
 
-
 import com.laioffer.authdeal.entity.Items;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import com.laioffer.authdeal.repository.ItemsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class ItemDao {
+  @Autowired
+  private ItemsRepository itemsRepository;
 
-//  @Autowired
-//  private SessionFactory sessionFactory;
-
-  public void addItem(Items item) {
-    Session session = null;
-    try {
-//      session = sessionFactory.openSession();
-      session.beginTransaction();
-      session.saveOrUpdate(item);
-      session.getTransaction().commit();
-    } catch (Exception e) {
-      e.printStackTrace();
-      session.getTransaction().rollback();
-    } finally {
-      if (session != null) {
-        session.close();
-      }
-    }
+  public Items addItem(Items item) {
+    return itemsRepository.save(item);
   }
 
-//  public void removeItem(int itemId) {
-//    Session session = null;
-//    try {
-//      session = sessionFactory.openSession();
-//      Items item = session.get(Items.class, itemId);
-//    }
-//  }
+  public void deleteItem(int itemId) {
+    itemsRepository.deleteById(itemId);
+  }
+
+  public Items findItemById(int itemId) {
+    Items item = itemsRepository.findById(itemId).get();
+    return item;
+  }
+
+  public List<Items> findAllItems() {
+    return (List<Items>) itemsRepository.findAll();
+  }
 }
