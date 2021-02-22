@@ -19,7 +19,7 @@ public class FileUploadUtil {
         }
 
         try (InputStream inputStream = multipartFile.getInputStream()) {
-            Path filePath = uploadPath.resolve(fileName);
+            Path filePath = uploadPath.resolve("");
             long ret = Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
             System.out.print(ret);
             System.out.print(filePath.toAbsolutePath());

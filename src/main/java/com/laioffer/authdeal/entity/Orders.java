@@ -43,6 +43,8 @@ public class Orders implements Serializable {
   private String country;
 
   public Orders() {
+    this.orderDate = new Timestamp(System.currentTimeMillis());
+    this.lastUpdateDate = new Timestamp(System.currentTimeMillis());
   }
 
   public Orders(int orderId, Users buyer, Users seller, Items item, Timestamp orderDate,

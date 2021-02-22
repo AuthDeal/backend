@@ -14,21 +14,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class UploadController {
 
     @RequestMapping(value ="/upload", method = RequestMethod.POST)
-    public ResponseEntity<String> saveUser(@RequestParam("image") MultipartFile multipartFile) throws IOException {
+    public ResponseEntity<Map> upload(@RequestParam("image") MultipartFile multipartFile) throws IOException {
 
         System.out.println(multipartFile.toString());
 
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 
-        String uploadDir = "/image/" + multipartFile.getOriginalFilename();
+        String uploadDir = "src/main/webapp/" + multipartFile.getOriginalFilename();
         //String uploadDir = "/image_upload/";
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
-        return new ResponseEntity<String>("Hello World!", HttpStatus.OK);
+        //
+        System.out.println(fileName);
+        Map map = new HashMap<String,String>();
+        map.put("image",fileName);
+
+        return new ResponseEntity<Map>(map, HttpStatus.OK);
     }
+
 }

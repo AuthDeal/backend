@@ -1,5 +1,6 @@
-package com.laioffer.authdeal.dao;
+package com.laioffer.authdeal;
 
+import com.laioffer.authdeal.dao.UserDao;
 import com.laioffer.authdeal.entity.Users;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
