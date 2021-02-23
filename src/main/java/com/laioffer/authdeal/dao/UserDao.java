@@ -16,6 +16,10 @@ public class UserDao {
     usersRepository.save(user);
   }
 
+  public void updateUsers(Users user) {
+    usersRepository.save(user);
+  }
+
   public Users findUserById(String userName) {
     return usersRepository.findById(userName).get();
   }
