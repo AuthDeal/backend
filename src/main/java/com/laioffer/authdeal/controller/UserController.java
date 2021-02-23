@@ -1,6 +1,7 @@
 package com.laioffer.authdeal.controller;
 
 import com.laioffer.authdeal.dao.UserDao;
+import com.laioffer.authdeal.entity.Result;
 import com.laioffer.authdeal.entity.Users;
 import java.util.List;
 import java.util.UUID;
@@ -16,6 +17,16 @@ public class UserController {
 
   @Autowired
   private UserDao userDao;
+
+  @RequestMapping(value = "/users/register", method={RequestMethod.POST, RequestMethod.GET})
+  public Result register(Users user) {
+    return userDao.register(user);
+  }
+
+  @RequestMapping(value = "/users/login", method={RequestMethod.POST, RequestMethod.GET})
+  public Result login(Users user) {
+    return userDao.login(user);
+  }
 
   @RequestMapping(value = "/users/all", method = RequestMethod.GET)
   public List<Users> fetchAllUsers() {

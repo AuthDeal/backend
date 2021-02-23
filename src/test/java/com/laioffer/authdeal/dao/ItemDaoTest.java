@@ -31,11 +31,11 @@ class ItemDaoTest {
       usersDao.createUsers(user2);
 
       Items item1 = new Items(user1, "printer", 63.0f, "picture",
-              "Perfect cheap price printer", ItemCondition.LIKENEW, 77007);
+              "Perfect cheap price printer", false, ItemCondition.LIKENEW, 77007);
       itemDao.addItem(item1);
 
       Items item2 = new Items(user2, "cellphone", 46.0f, "picture",
-              "good condition cellphone", ItemCondition.GOOD, 70001);
+              "good condition cellphone", false, ItemCondition.GOOD, 70001);
       itemDao.addItem(item2);
 
       for(Items item: itemDao.findAllItems()){
