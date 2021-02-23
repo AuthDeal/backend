@@ -1,19 +1,27 @@
 package com.laioffer.authdeal.controller;
 
-import com.laioffer.authdeal.dao.ItemDao;
-import com.laioffer.authdeal.entity.Items;
+import com.laioffer.authdeal.dao.*;
+import com.laioffer.authdeal.entity.*;
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class ItemController {
   @Autowired
   private ItemDao itemDao;
+
+  @Autowired
+  private UserDao userDao;
+
+  @Autowired
+  private MessageDao messagesDao;
+
+  @Autowired
+  private OrdersDao ordersDao;
 
   @RequestMapping(value = "/items", method = RequestMethod.GET)
   public List<Items> fetchAllItems() {
@@ -34,5 +42,28 @@ public class ItemController {
   @RequestMapping(value = "/items/{itemId}",method = RequestMethod.DELETE)
   public void deleteItem(@PathVariable(value = "itemId") int itemId) {
     itemDao.deleteItem(itemId);
+  }
+
+  @RequestMapping(value ="/seller/{sellId}/items", method = RequestMethod.GET)
+  public Map<String,Object> sellAndItsItems(@PathVariable(value = "sellId") String sellId){
+    Map<String,Object> map = new HashMap<>();
+    Users seller = userDao.findUserById(sellId);
+    if(seller!=null){
+      map.put("seller",seller);
+      map.put("items",itemDao.findItemsBySellId(sellId));
+    }
+    return map;
+  }
+  @RequestMapping(value ="/seller/{sellId}/dashboard", method = RequestMethod.GET)
+  public Map<String,Object> sellDashboard(@PathVariable(value = "sellId") String sellId) {
+    Map<String, Object> map = new HashMap<>();
+    Users seller = userDao.findUserById(sellId);
+    if (seller != null) {
+      map.put("seller", seller);
+      map.put("items", itemDao.findItemsBySellId(sellId));
+      map.put("massage",messagesDao.FindAllMassageByUser(sellId));
+      map.put("order",ordersDao.findOrdersBySellerId(sellId));
+    }
+    return map;
   }
 }

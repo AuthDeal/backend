@@ -43,6 +43,28 @@ public class Orders implements Serializable {
   private String country;
 
   public Orders() {
+    this.orderDate = new Timestamp(System.currentTimeMillis());
+    this.lastUpdateDate = new Timestamp(System.currentTimeMillis());
+  }
+
+  public Orders(Users buyer, Users seller, Items item, Timestamp orderDate,
+      Timestamp lastUpdateDate, OrderStatus orderStatus, boolean isPickUp, String firstName,
+      String lastName, String address, String city, String state, String zipcode,
+      String country) {
+    this.buyer = buyer;
+    this.seller = seller;
+    this.item = item;
+    this.orderDate = orderDate;
+    this.lastUpdateDate = lastUpdateDate;
+    this.orderStatus = orderStatus;
+    this.isPickUp = isPickUp;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.address = address;
+    this.city = city;
+    this.state = state;
+    this.zipcode = zipcode;
+    this.country = country;
   }
 
   public Orders(int orderId, Users buyer, Users seller, Items item, Timestamp orderDate,

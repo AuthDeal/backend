@@ -30,6 +30,7 @@ public class Messages {
   private Timestamp times;
 
   public Messages() {
+    this.times = new Timestamp(System.currentTimeMillis());
   }
 
   public Messages(Users from, Users to, String text, boolean isRead, Timestamp times) {

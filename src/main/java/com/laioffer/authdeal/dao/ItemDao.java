@@ -2,6 +2,7 @@ package com.laioffer.authdeal.dao;
 
 import com.laioffer.authdeal.entity.Items;
 import com.laioffer.authdeal.repository.ItemsRepository;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -21,11 +22,20 @@ public class ItemDao {
   }
 
   public Items findItemById(int itemId) {
-    Items item = itemsRepository.findById(itemId).get();
-    return item;
+    return itemsRepository.findById(itemId).get();
   }
 
   public List<Items> findAllItems() {
     return (List<Items>) itemsRepository.findAll();
+  }
+
+  public List<Items> findItemsBySellId(String userId){
+    List<Items> ret = new ArrayList<>();
+    for(Items item : itemsRepository.findAllItemsOfSeller(userId)){
+      if(!item.getSold()){
+        ret.add(item);
+      }
+    }
+    return ret;
   }
 }

@@ -3,6 +3,7 @@ package com.laioffer.authdeal.dao;
 import com.laioffer.authdeal.entity.Messages;
 import com.laioffer.authdeal.repository.MessagesRepository;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,21 @@ public class MessageDao {
 
   public Messages findMsgById(int messageId) {
     return messagesRepository.findById(messageId).get();
+  }
+
+
+  public List<Messages> FindAllMassageByUser(String userId){
+    List<Messages> ret = new ArrayList<>();
+    for(Messages messages : messagesRepository.findAllMessagesOfUser(userId)){
+      ret.add(messages);
+    }
+    Collections.sort(ret, new Comparator<Messages>() {
+      @Override
+      public int compare(Messages o1, Messages o2) {
+        return o2.getTimes().compareTo(o1.getTimes());
+      }
+    });
+    return ret;
   }
 
   public List<Messages> findMsgByUser(String userName) {

@@ -24,10 +24,12 @@ public class Items implements Serializable {
 
   @ManyToOne
   private Users users;
+
   private String itemName;
   private float price;
   private String picture;
   private String description;
+  private Boolean isSold;
 
   @Enumerated(EnumType.STRING)
   private ItemCondition itemCondition;
@@ -37,24 +39,27 @@ public class Items implements Serializable {
   public Items() {
   }
 
-  public Items( Users user, String itemName, float price, String picture,
-      String description, ItemCondition itemCondition, int zipcode) {
-    this.users = user;
+  public Items(Users users, String itemName, float price, String picture,
+      String description, Boolean isSold, ItemCondition itemCondition, int zipcode) {
+    this.users = users;
     this.itemName = itemName;
     this.price = price;
     this.picture = picture;
     this.description = description;
+    this.isSold = isSold;
     this.itemCondition = itemCondition;
     this.zipcode = zipcode;
   }
-  public Items(int itemId, Users user, String itemName, float price, String picture,
-      String description, ItemCondition itemCondition, int zipcode) {
-    this.users = user;
+
+  public Items(int itemId, Users users, String itemName, float price, String picture,
+      String description, Boolean isSold, ItemCondition itemCondition, int zipcode) {
     this.itemId = itemId;
+    this.users = users;
     this.itemName = itemName;
     this.price = price;
     this.picture = picture;
     this.description = description;
+    this.isSold = isSold;
     this.itemCondition = itemCondition;
     this.zipcode = zipcode;
   }
@@ -111,6 +116,14 @@ public class Items implements Serializable {
     this.description = description;
   }
 
+  public Boolean getSold() {
+    return isSold;
+  }
+
+  public void setSold(Boolean sold) {
+    isSold = sold;
+  }
+
   public ItemCondition getItemCondition() {
     return itemCondition;
   }
@@ -142,13 +155,15 @@ public class Items implements Serializable {
         Objects.equals(getItemName(), items.getItemName()) &&
         Objects.equals(getPicture(), items.getPicture()) &&
         Objects.equals(getDescription(), items.getDescription()) &&
+        Objects.equals(isSold, items.isSold) &&
         getItemCondition() == items.getItemCondition();
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(getItemId(), getItemName(), getPrice(), getPicture(), getDescription(),
-        getItemCondition(), getZipcode());
+    return Objects
+        .hash(getItemId(), getItemName(), getPrice(), getPicture(), getDescription(), isSold,
+            getItemCondition(), getZipcode());
   }
 
   @Override
@@ -160,6 +175,7 @@ public class Items implements Serializable {
         ", price=" + price +
         ", picture='" + picture + '\'' +
         ", description='" + description + '\'' +
+        ", isSold=" + isSold +
         ", itemCondition=" + itemCondition +
         ", zipcode=" + zipcode +
         '}';
