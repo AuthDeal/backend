@@ -34,10 +34,26 @@ public class ItemController {
     return itemDao.findItemById(itemId);
   }
 
-  @RequestMapping(value = "/item", method = RequestMethod.POST)
-  public Items postItem(Items item) {
+/*  @RequestMapping(value = "/items", method = RequestMethod.POST)
+  public Items postItem(@RequestBody Items item) {
+
     itemDao.addItem(item);
     return item;
+  }*/
+
+  @RequestMapping(value = "/items", method = RequestMethod.POST)
+  public Items postItem(@RequestBody Map<String,Object> json) {
+    Items newItem = new Items();
+    Users seller = userDao.findUserById((String)json.get("userName"));
+    newItem.setUsers(seller);
+    newItem.setItemName((String)json.get("itemName"));
+    newItem.setPrice((float) json.get("price"));
+    newItem.setPicture((String) json.get("picture"));
+    newItem.setItemCondition((ItemCondition) json.get("itemCondition"));
+    newItem.setDescription((String) json.get("description"));
+    newItem.setSold(false);
+    newItem.setZipcode((int)json.get("zipcode"));
+    return itemDao.addItem(newItem);
   }
 
   @RequestMapping(value = "/items/{itemId}",method = RequestMethod.DELETE)
