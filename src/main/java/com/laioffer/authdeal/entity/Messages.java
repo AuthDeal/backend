@@ -30,6 +30,15 @@ public class Messages {
   private Timestamp times;
 
   public Messages() {
+    this.times = new Timestamp(System.currentTimeMillis());
+  }
+
+  public Messages(Users from, Users to, String text, boolean isRead, Timestamp times) {
+    this.from = from;
+    this.to = to;
+    this.text = text;
+    this.isRead = isRead;
+    this.times = times;
   }
 
   public Messages(int messageId, Users from, Users to, String text, boolean isRead,
