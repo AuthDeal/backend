@@ -34,27 +34,25 @@ public class ItemController {
     return itemDao.findItemById(itemId);
   }
 
-/*  @RequestMapping(value = "/items", method = RequestMethod.POST)
-  public Items postItem(@RequestBody Items item) {
-
-    itemDao.addItem(item);
-    return item;
-  }*/
-
   @RequestMapping(value = "/items", method = RequestMethod.POST)
-  public Items postItem(@RequestBody Map<String,Object> json) {
-    Items newItem = new Items();
-    Users seller = userDao.findUserById((String)json.get("userName"));
-    newItem.setUsers(seller);
-    newItem.setItemName((String)json.get("itemName"));
-    newItem.setPrice((float) json.get("price"));
-    newItem.setPicture((String) json.get("picture"));
-    newItem.setItemCondition((ItemCondition) json.get("itemCondition"));
-    newItem.setDescription((String) json.get("description"));
-    newItem.setSold(false);
-    newItem.setZipcode((int)json.get("zipcode"));
-    return itemDao.addItem(newItem);
+  public Items postItem(@RequestBody Items item) {
+    return itemDao.addItem(item);
   }
+
+//  @RequestMapping(value = "/items", method = RequestMethod.POST)
+//  public Items postItem(@RequestBody Map<String,Object> json) {
+//    Items newItem = new Items();
+//    Users seller = userDao.findUserById((String)json.get("userName"));
+//    newItem.setUsers(seller);
+//    newItem.setItemName((String)json.get("itemName"));
+//    newItem.setPrice((float) json.get("price"));
+//    newItem.setPicture((String) json.get("picture"));
+//    newItem.setItemCondition((ItemCondition) json.get("itemCondition"));
+//    newItem.setDescription((String) json.get("description"));
+//    newItem.setSold(false);
+//    newItem.setZipcode((int)json.get("zipcode"));
+//    return itemDao.addItem(newItem);
+//  }
 
   @RequestMapping(value = "/items/{itemId}",method = RequestMethod.DELETE)
   public void deleteItem(@PathVariable(value = "itemId") int itemId) {
